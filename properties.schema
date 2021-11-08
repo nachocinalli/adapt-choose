@@ -48,6 +48,15 @@
 			"help": "This is the instruction text",
 			"translatable": true
 		},
+		"_spaceSize": {
+			"type": "number",
+			"required": true,
+			"default": 25,
+			"title": "Init blank spaces",
+			"inputType": "Number",
+			"validators": ["required", "number"],
+			"help": "How many blank spaces are renderer"
+		},
 		"_items": {
 			"type": "array",
 			"required": true,
@@ -63,7 +72,7 @@
 						"title": "Item Text",
 						"inputType": "Text",
 						"validators": [],
-						"help": "This text will display as the item text",
+						"help": "This text will display as the item text. Use [] to add white spaces.",
 						"translatable": true
 					},
 					"_graphic": {
