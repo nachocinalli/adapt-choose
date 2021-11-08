@@ -22,7 +22,6 @@
     &.is-selected {
       background-color: @white;
       color: @black;
-     
     }
   }
   &__replace {
@@ -31,6 +30,7 @@
   }
   &__item-state {
     position: absolute;
+    top: 0.5rem;
     display: none;
   }
 
@@ -41,21 +41,21 @@
   &__item-incorrect-icon .icon {
     .icon-cross;
   }
-  &__widget.show-user-answer{
+  &__widget.show-user-answer {
     .choose__item-state {
       display: block;
     }
     .choose__item.is-correct {
       &.is-selected {
         .choose__item-choice {
-          &.is-selected{
+          &.is-selected {
             background-color: @validation-success;
             color: @white;
-          } 
+          }
         }
       }
+    }
   }
-}
   &__widget.show-correct-answer {
     .choose__item-choice {
       &.is-selected {
@@ -74,5 +74,4 @@
       border-bottom: 1px dotted @validation-error;
     }
   }
-  
 }
