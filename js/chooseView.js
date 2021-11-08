@@ -20,7 +20,7 @@ class ChooseView extends QuestionView {
 
   setupItems() {
     this.model.get('_items')?.forEach((item) => {
-      const _spaceSize = 50;
+      const _spaceSize = this.model.get('_spaceSize');
       let _spaces = '';
       for (let i = 0; i < _spaceSize; i++) {
         _spaces += '&nbsp;';
