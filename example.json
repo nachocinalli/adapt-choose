@@ -18,10 +18,10 @@
   "_canShowFeedback": true,
   "_canShowMarking": true,
   "_recordInteraction": true,
-  "_hasItemScoring": true,
+  "_spaceSize": 25,
   "_items": [
     {
-      "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+      "text": "Lorem ipsum dolor sit [], consectetuer adipiscing elit",
       "_graphic": {
         "alt": "",
         "large": "",
@@ -38,7 +38,7 @@
           "_isCorrect": false
         },
         {
-          "text": "two",
+          "text": "amet",
           "_graphic": {
             "alt": "",
             "large": "",
@@ -55,11 +55,10 @@
           },
           "_isCorrect": false
         }
-      ],
-      "_shouldBeSelected": 1
+      ]
     },
     {
-      "text": "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
+      "text": "Nullam dictum felis eu pede [] pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
       "_graphic": {
         "alt": "",
         "large": "",
@@ -67,13 +66,13 @@
       },
       "_options": [
         {
-          "text": "one",
+          "text": "mollis",
           "_graphic": {
             "alt": "",
             "large": "",
             "small": ""
           },
-          "_isCorrect": false
+          "_isCorrect": true
         },
         {
           "text": "two",
@@ -82,7 +81,7 @@
             "large": "",
             "small": ""
           },
-          "_isCorrect": true
+          "_isCorrect": false
         },
         {
           "text": "three",
@@ -93,11 +92,10 @@
           },
           "_isCorrect": false
         }
-      ],
-      "_shouldBeSelected": 2
+      ]
     },
     {
-      "text": "Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
+      "text": "Aenean leo ligula, [] eu, consequat vitae, eleifend ac, enim.",
       "_graphic": {
         "alt": "",
         "large": "",
@@ -114,7 +112,7 @@
           "_isCorrect": false
         },
         {
-          "text": "two",
+          "text": "porttitor",
           "_graphic": {
             "alt": "",
             "large": "",
@@ -131,8 +129,7 @@
           },
           "_isCorrect": false
         }
-      ],
-      "_shouldBeSelected": 1
+      ]
     }
   ],
   "_feedback": {
