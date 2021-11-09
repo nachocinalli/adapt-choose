@@ -45,13 +45,19 @@
     .choose__item-state {
       display: block;
     }
+    .choose__item.is-incorrect {
+      .choose__item-choice {
+        &.is-selected {
+          background-color: @validation-error;
+          color: @white;
+        }
+      }
+    }
     .choose__item.is-correct {
-      &.is-selected {
-        .choose__item-choice {
-          &.is-selected {
-            background-color: @validation-success;
-            color: @white;
-          }
+      .choose__item-choice {
+        &.is-selected {
+          background-color: @validation-success;
+          color: @white;
         }
       }
     }
