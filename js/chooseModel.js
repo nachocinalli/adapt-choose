@@ -107,8 +107,6 @@ export default class ChooseModel extends QuestionModel {
 
       userAnswer[item._index] = item._options[optionIndex]._index;
     });
-    console.log('userAnswer', userAnswer);
-
     this.set({
       _userAnswer: userAnswer
     });
