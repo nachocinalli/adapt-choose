@@ -19,13 +19,12 @@ class ChooseView extends QuestionView {
   }
 
   setupItems() {
+    const _spaceSize = this.model.get('_spaceSize');
+    let _spaces = '';
+    for (let i = 0; i < _spaceSize; i++) {
+      _spaces += '&nbsp;';
+    }
     this.model.get('_items')?.forEach((item) => {
-      const _spaceSize = this.model.get('_spaceSize');
-      let _spaces = '';
-      for (let i = 0; i < _spaceSize; i++) {
-        _spaces += '&nbsp;';
-      }
-
       let _choose = `<span class="choose__replace">${_spaces}</span>`;
       this.updateItem(item, _choose, false);
       if (item._selected) {
@@ -64,7 +63,6 @@ class ChooseView extends QuestionView {
   onKeyPress(event) {
 
     if (event.which !== 13) return;
-    // <ENTER> keypress
     this.onItemOptionSelect(event);
   }
 
@@ -84,14 +82,20 @@ class ChooseView extends QuestionView {
   }
 
   resetQuestion() {
-    this.$('.choose__item').removeClass('is-correct is-incorrect');
+    this.$('.choose__item').removeClass('is-correct is-incorrect is-selected');
+    this.$('.choose__item-choice').removeClass('is-correct is-incorrect is-selected');
     this.model.set('_isAtLeastOneCorrectSelection', false);
 
     this.model.get('_items').forEach(item => {
-      if (item._isCorrect) return;
+      const $item = this.getItemElement(item);
+      $item.find('.choose__item-text .choose__replace').replaceWith('[]');
+      // if (item._isCorrect) return;
       item._options.forEach(option => (option._isSelected = false));
       item._selected = null;
+
     });
+
+    this.setupItems();
   }
 
 }
