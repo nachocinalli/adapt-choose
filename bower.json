@@ -1,17 +1,20 @@
 {
-  "name": "adapt-choose",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/nachocinalli/adapt-choose.git"
-  },
-  "framework": ">=5.17.2",
-  "version": "1.0.0",
-  "homepage": "https://github.com/nachocinalli/adapt-choose",
-  "issues": "https://github.com/nachocinalli/adapt-choose/issues",
-  "component": "choose",
-  "description": "A choose question component",
-  "main": "/js/adapt-choose.js",
-  "displayName": "Choose Question",
-  "keywords": ["adapt-plugin", "adapt-component"],
-  "license": "GPLv3"
+    "name": "adapt-choose",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/nachocinalli/adapt-choose.git"
+    },
+    "framework": ">=5.17.2",
+    "version": "1.0.0",
+    "homepage": "https://github.com/nachocinalli/adapt-choose",
+    "issues": "https://github.com/nachocinalli/adapt-choose/issues",
+    "component": "choose",
+    "description": "A choose question component",
+    "main": "/js/adapt-choose.js",
+    "displayName": "Choose Question",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-component"
+    ],
+    "license": "GPLv3"
 }
