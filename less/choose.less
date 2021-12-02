@@ -13,16 +13,23 @@
   &__item-choice {
     background-color: @black;
     color: @white;
-    padding: 0.5rem;
     margin-right: 1rem;
+    label {
+      display: block;
+      padding: 0.5rem;
+    }
     input {
       opacity: 0;
       position: absolute;
     }
+
     &.is-selected {
       background-color: @white;
       color: @black;
     }
+  }
+  &__item-choice-text {
+    user-select: none;
   }
   &__replace {
     display: inline-block;
@@ -78,6 +85,12 @@
     }
     .is-incorrect .choose__replace {
       border-bottom: 1px dotted @validation-error;
+    }
+  }
+
+  &:not(.is-complete) {
+    .choose__item-choice label {
+      cursor: pointer;
     }
   }
 }
