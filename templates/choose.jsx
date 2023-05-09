@@ -115,6 +115,7 @@ export default function Choose(props) {
                     data-adapt-index={_index}
                     onKeyPress={onKeyPress}
                     onChange={onItemOptionSelect}
+                    checked={option._isSelected}
                   />
                 </div>
               ))}
