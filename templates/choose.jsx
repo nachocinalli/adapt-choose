@@ -14,7 +14,7 @@ export default function Choose(props) {
     displayTitle,
     body,
     instruction,
-    onKeyPress,
+    onKeyDown,
     onItemOptionSelect,
     _isCorrectAnswerShown,
     isInteractive
@@ -113,9 +113,10 @@ export default function Choose(props) {
                         : `${Adapt.a11y.normalize(text)}`
                     }
                     data-adapt-index={_index}
-                    onKeyPress={onKeyPress}
+                    onKeyDown={onKeyDown}
                     onChange={onItemOptionSelect}
                     checked={option._isSelected}
+
                   />
                 </div>
               ))}

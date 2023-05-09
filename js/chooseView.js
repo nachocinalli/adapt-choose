@@ -4,7 +4,7 @@ import Adapt from 'core/js/adapt';
 class ChooseView extends QuestionView {
 
   initialize(...args) {
-    this.onKeyPress = this.onKeyPress.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.onItemOptionSelect = this.onItemOptionSelect.bind(this);
     super.initialize(...args);
   }
@@ -60,8 +60,7 @@ class ChooseView extends QuestionView {
     return this.$('.choose__item').filter(`[data-index="${index}"]`);
   }
 
-  onKeyPress(event) {
-
+  onKeyDown(event) {
     if (event.which !== 13) return;
     this.onItemOptionSelect(event);
   }
