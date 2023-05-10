@@ -1,6 +1,7 @@
 import Adapt from 'core/js/adapt';
+import a11y from 'core/js/a11y';
 import React from 'react';
-import { templates, classes, html, compile } from 'core/js/reactHelpers';
+import { templates, classes, compile } from 'core/js/reactHelpers';
 
 export default function Choose(props) {
   const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
@@ -15,6 +16,8 @@ export default function Choose(props) {
     body,
     instruction,
     onKeyDown,
+    onItemOptionFocus,
+    onItemOptionBlur,
     onItemOptionSelect,
     _isCorrectAnswerShown,
     isInteractive
@@ -25,7 +28,6 @@ export default function Choose(props) {
   return (
     <div className='component__inner choose__inner'>
       <templates.header {...props} />
-
       <div
         className={classes([
           'component__widget',
@@ -34,11 +36,9 @@ export default function Choose(props) {
           _isInteractionComplete && 'is-complete is-submitted show-user-answer',
           _isCorrect && 'is-correct'
         ])}
-        role='radiogroup'
         aria-labelledby={
           (displayTitle || body || instruction) && `${_id}-header`
-        }
-      >
+        } >
 
         {props._items.map(({ text, _graphic, _options, _index, _isCorrect, _selected }, index) => (
           <div
@@ -49,20 +49,21 @@ export default function Choose(props) {
               _isInteractionComplete && _isCorrect && 'is-correct',
               _isInteractionComplete && !_isCorrect && 'is-incorrect'
             ])}
+            role='radiogroup'
+            aria-label={a11y.normalize(text.replace('[]', ''))}
             key={_index}
-            data-index={_index}>
+            data-index={_index} >
             <div
               className={classes([
                 'choose__item-state',
                 _isInteractionComplete && _isCorrect && 'choose__item-correct-icon',
                 _isInteractionComplete && !_isCorrect && 'choose__item-incorrect-icon'
-              ])}
-            >
+              ])} >
               <div className='icon'></div>
             </div>
-            <div className='choose__item-text'>
-              {html(compile(text))}
-            </div>
+
+            <span className='choose__item-text' aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(text) }}></span>
+
             <templates.image {..._graphic}
               classNamePrefixes={['choose__item']}
               attributionClassNamePrefixes={['component', 'choose']}
@@ -73,25 +74,22 @@ export default function Choose(props) {
                   className={classes([
                     'choose__item-choice',
                     option._isSelected && 'is-selected',
+                    option._isHighlighted && 'is-highlighted',
+                    !_isEnabled && 'is-disabled',
                     _isCorrectAnswerShown && option._isCorrect && 'is-correct',
                     _isCorrectAnswerShown && !option._isCorrect && 'is-incorrect'
                   ])}
-                  key={option._index}
-                >
+                  key={option._index} >
                   <label
-                    aria-hidden={true}
+                    aria-hidden="true"
                     htmlFor={`input-${_id}-${_index}-${option._index}`}
-                    data-adapt-index={_index}
-                  >
+                    data-adapt-index={_index} >
 
-                    <div className='choose__item-choice-text'>
-                      {html(compile(option.text))}
-                    </div>
+                    <span className='choose__item-choice-text' dangerouslySetInnerHTML={{ __html: compile(option.text) }}></span>
 
                     <templates.image {...option._graphic}
                       classNamePrefixes={['choose__item-choice']}
-                      attributionClassNamePrefixes={['component', 'choose']}
-                    />
+                      attributionClassNamePrefixes={['component', 'choose']} />
 
                     <div className='choose__item-icon'>
                       <div className='icon'></div>
@@ -109,14 +107,15 @@ export default function Choose(props) {
                           _isCorrect
                             ? ariaLabels.correct
                             : ariaLabels.incorrect
-                        }, ${Adapt.a11y.normalize(text)}`
-                        : `${Adapt.a11y.normalize(text)}`
+                        }, ${a11y.normalize(option.text)}`
+                        : `${a11y.normalize(option.text)}`
                     }
                     data-adapt-index={_index}
+                    onFocus={onItemOptionFocus}
+                    onBlur={onItemOptionBlur}
                     onKeyDown={onKeyDown}
                     onChange={onItemOptionSelect}
                     checked={option._isSelected}
-
                   />
                 </div>
               ))}

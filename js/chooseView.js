@@ -6,6 +6,8 @@ class ChooseView extends QuestionView {
   initialize(...args) {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onItemOptionSelect = this.onItemOptionSelect.bind(this);
+    this.onItemOptionFocus = this.onItemOptionFocus.bind(this);
+    this.onItemOptionBlur = this.onItemOptionBlur.bind(this);
     super.initialize(...args);
   }
 
@@ -75,9 +77,28 @@ class ChooseView extends QuestionView {
     this.model.set('_highlighted', `${itemIndex}-${optionIndex}`);
 
     const item = this.model.get('_items')[itemIndex];
-
     const _choose = this.getChoose(item);
     this.updateItem(item, _choose, true);
+  }
+
+  onItemOptionFocus(event) {
+    if (!this.model.isInteractive()) return;
+
+    this.setItemOptionHighlight(event, true);
+  }
+
+  onItemOptionBlur(event) {
+    if (!this.model.isInteractive()) return;
+
+    this.setItemOptionHighlight(event, false);
+  }
+
+  setItemOptionHighlight(event, isHighlighted) {
+    const $input = $(event.currentTarget);
+    const itemIndex = $input.data('adapt-index');
+    const optionIndex = parseInt($input.val());
+
+    this.model.get('_items')[itemIndex]._options[optionIndex]._isHighlighted = isHighlighted;
   }
 
   resetQuestion() {
