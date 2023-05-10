@@ -12,9 +12,6 @@ The attributes listed below are used in components.json and are properly formatt
 No known limitations.
 
 ----------------------------
-**Version number:**  1.0.0  
-**Framework versions:** 5.17.2+  
+**Version number:**  1.1.0  
+**Framework versions:** 5.19.1+  
 **Author / maintainer:** [Ignacio Cinalli] (https://github.com/nachocinalli)  
-**Accessibility support:** 
-**RTL support:**   
-**Cross-platform coverage:** 
